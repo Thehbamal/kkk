@@ -150,5 +150,10 @@ async def echo_document(client: Client, msg: Message):
     file_obj.name = "index.html"
     await client.send_document(msg.chat.id, file_obj)
 
+@HB.on_message(filters.text & filters.command(["css"]))
+async def echo_document(client: Client, msg: Message):
+    file_obj = io.BytesIO(bytes(msg.text, "utf-8"))
+    file_obj.name = "style.css"
+    await client.send_document(msg.chat.id, file_obj)
 
 HB.run()
