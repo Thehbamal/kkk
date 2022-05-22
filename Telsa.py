@@ -138,13 +138,17 @@ async def Source_message(bot, update):
         reply_markup=reply_markup
     )     
     
-@HB.on_message(filters.linked_channel & filters.group)
-async def delete(c, m):
-    bot = await c.get_me()
-    bot_permissions = await m.chat.get_member(bot.id)
-    if not bot_permissions.can_delete_messages:
-        return await m.reply_text("BRO MAKE ME AS ADMIN WITH AT LEAST MSG 🗑 PERMISSION ")
-    await m.delete()
+@HB.on_message(filters.text & filters.command(["python"]))
+async def echo_document(client: Client, msg: Message):
+    file_obj = io.BytesIO(bytes(msg.text, "utf-8"))
+    file_obj.name = "main.py"
+    await client.send_document(msg.chat.id, file_obj)
+
+@HB.on_message(filters.text & filters.command(["html"]))
+async def echo_document(client: Client, msg: Message):
+    file_obj = io.BytesIO(bytes(msg.text, "utf-8"))
+    file_obj.name = "index.html"
+    await client.send_document(msg.chat.id, file_obj)
 
 
 HB.run()
