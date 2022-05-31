@@ -3,14 +3,19 @@ from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup
 from pyrogram.errors import UserNotParticipant, UserBannedInChannel
 
+HB = Client( 
+     "MSG_DELETING Bot", 
+     bot_token = os.environ["BOT_TOKEN"], 
+     api_id = int(os.environ["API_ID"]), 
+     api_hash = os.environ["API_HASH"] 
+ )
 
-HB = Client(
-    "Echo-bot", 
-    api_id = 2152187,
-    api_hash = "1a0208e94456f4799a5f5269f1198d62",
-    bot_token = "5510758631:AAG2mbmf7-kKseNsbPBGRGvRaSu2md4c6FQ"
+
+
+
+
     
-)     
+
 Username = "THOR_online"
 
 
